@@ -1144,11 +1144,12 @@
 
     if (table->addr_type != (net->type == NET_IP4 ? NET_ROA4 : NET_ROA6))
       RESULT(T_ENUM_ROA, i, ROA_UNKNOWN); /* Prefix and table type mismatch */
-    else
+    else {
       if (f_slot)
 	filter_roa_reloader_subscribe(table, f_slot, v1.val.net, as);    
 
       RESULT(T_ENUM_ROA, i, [[ net_roa_check(table, net, as) ]]);
+    }
   }
 
   INST(FI_ROA_CHECK_EXPLICIT, 2, 1) {	/* ROA Check */
@@ -1168,11 +1169,12 @@
 
     if (table->addr_type != (v1.val.net->type == NET_IP4 ? NET_ROA4 : NET_ROA6))
       RESULT(T_ENUM_ROA, i, ROA_UNKNOWN); /* Prefix and table type mismatch */
-    else
+    else {
       if (f_slot)
         filter_roa_reloader_subscribe(table, f_slot, v1.val.net, as); 
 
       RESULT(T_ENUM_ROA, i, [[ net_roa_check(table, v1.val.net, as) ]]);
+    }
 
   }
 
