@@ -572,7 +572,7 @@ static rte *
 export_filter_(struct channel *c, rte *rt0, rte **rt_free, linpool *pool, int silent)
 {
   struct proto *p = c->proto;
-  const struct filter *filter = c->out_filter.filter;
+  struct filter *filter = c->out_filter.filter;
   struct proto_stats *stats = &c->stats;
   rte *rt;
   int v;
@@ -1552,7 +1552,7 @@ rte_update2(struct channel *c, const net_addr *n, rte *new, struct rte_src *src)
 {
   struct proto *p = c->proto;
   struct proto_stats *stats = &c->stats;
-  const struct filter *filter = c->in_filter.filter;
+  struct filter *filter = c->in_filter.filter;
   rte *dummy = NULL;
   net *nn;
 
