@@ -67,6 +67,7 @@ void filter_slot_flush(struct filter_slot *fs)
   filter_slot_stop(fs);
   fs->filter = NULL;
   rfree(fs->p);
+  fs->p = NULL;
 }
 
 void filter_slot_start(struct filter_slot *fs, void (*reloader)(struct filter_slot *))
